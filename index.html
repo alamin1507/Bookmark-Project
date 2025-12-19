@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bookmark Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Bookmark Manager</h1>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-btn active" data-view="all" id="homeBtn">Home</button>
+        <button class="nav-btn" data-view="archived" id="archivedBtn">Archived</button>
+      </nav>
+
+      <div class="search-bar-mobile">
+        <input id="searchMobile" placeholder="Search by title..." />
+      </div>
+
+      <div class="tags-block">
+        <h4>Tags</h4>
+        <div id="tagsContainer" class="tags-container"></div>
+        <button id="resetFilters" class="small-btn">Reset Filters</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <label class="theme-label">
+          <input type="checkbox" id="themeToggle" />
+          Dark Mode
+        </label>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="left">
+          <input id="search" placeholder="Search by title..." />
+        </div>
+        <div class="right">
+          <select id="sortSelect" title="Sort">
+            <option value="recent">Recently added</option>
+            <option value="visited">Recently visited</option>
+            <option value="most">Most visited</option>
+          </select>
+          <button id="addBtn" class="primary">+ Add Bookmark</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <h2 id="listTitle">All bookmarks</h2>
+        <div id="bookmarksGrid" class="grid"></div>
+        <div id="empty" class="empty">No bookmarks found.</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <header class="modal-header">
+        <h3 id="modalTitle">Add Bookmark</h3>
+        <button id="closeModal" class="icon-btn" title="Close">✕</button>
+      </header>
+      <form id="bookmarkForm" class="form">
+        <label>Title
+          <input id="title" required />
+        </label>
+        <label>Description
+          <textarea id="description" rows="3"></textarea>
+        </label>
+        <label>URL
+          <input id="url" type="url" required placeholder="https://example.com" />
+        </label>
+        <label>Tags (comma separated)
+          <input id="tagsInput" placeholder="e.g. JavaScript, CSS" />
+        </label>
+
+        <div class="modal-actions">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
